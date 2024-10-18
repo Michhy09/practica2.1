@@ -96,14 +96,14 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="nav-item"><a class="nav-link" href="#periodos">Periodos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#plazas">Plazas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#puestos">Puestos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('plazas.index') }}">Plazas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('puestos.index') }}">Puestos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#personal">Personal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#deptos">Deptos.</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#carreras">Carreras</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('depto.index') }}">Deptos.</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('carrera.index') }}">Carreras</a></li>
                         <li class="nav-item"><a class="nav-link" href="#reticulas">Retículas</a></li>
                         <li class="nav-item"><a class="nav-link" href="#materias">Materias</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#alumnos">Alumnos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('alumnos.index') }}">Alumnos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -113,7 +113,7 @@
                     <ul class="dropdown-menu">
                         <li class="d-flex justify-content-around">
                             <a class="dropdown-item" href="#">Docentes</a>
-                            <a class="dropdown-item" href="#">Alumnos</a>
+                            <a class="dropdown-item" href="">Alumnos</a>
                         </li>
                     </ul>
                 </li>
@@ -163,8 +163,10 @@
         <p>Bienvenidos a mi WebApp.</p>
         @endguest
         @auth
-        <h1>Sistema</h1>
-        <p>En esta pagina estara la descripcion del sistema.</p>
+        <div class="main-content">
+            @yield('contenido1')
+            @yield('contenido2') <!-- Aquí se mostrará el contenido de la sección 'contenido1' -->
+        </div>
         @endauth
     </div>
 </div>
