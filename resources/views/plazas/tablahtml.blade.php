@@ -26,7 +26,21 @@
                     <td>{{ $plaza->nombrePlaza}}</td>
                    
                     <td><a href="{{route('plazas.editar',  $plaza->id)}}" class="btn btn-outline-dark btn-sm">Editar</a></td>
-                    <td><a href="{{route('plazas.destroy', $plaza->id)}}" class="btn btn-outline-dark btn-sm">Eliminar</a></td>
+                   
+                    <td>
+                        <a href="{{ route('plazas.destroy', $plaza->id) }}" 
+                           class="btn btn-outline-dark btn-sm" 
+                           onclick="event.preventDefault(); if(confirm('¿Estás seguro de que deseas eliminar esta Plaza?')) { document.getElementById('delete-form-{{ $plaza->id }}').submit(); }">
+                            Eliminar
+                        </a>
+                    
+                        <!-- Formulario oculto para enviar la petición DELETE -->
+                        <form id="delete-form-{{ $plaza->id }}" action="{{ route('plazas.destroy', $plaza->id) }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                    </td>
+    
                     <td><a href="{{route('plazas.ver', $plaza->id)}}" class="btn btn-outline-dark btn-sm">Ver</a></td>
                 </tr>
                 @endforeach

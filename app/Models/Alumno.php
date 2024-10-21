@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Alumno extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre', 'apellidop', 'apellidom', 'noctrl', 'sexo', 'carrera'];
+    protected $fillable = ['nombre', 'apellidop', 'apellidom', 'noctrl', 'sexo', 'carrera_id'];
 
-   
+    public function carrera():BelongsTo{
+        return $this ->belongsTo(Carrera::class);
+    }
 }

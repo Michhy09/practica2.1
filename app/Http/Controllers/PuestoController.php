@@ -55,7 +55,7 @@ class PuestoController extends Controller
    {
        $puestos = Puesto::paginate(5);
        $accion = "D"; // Acción para mostrar detalles
-       $des = "";
+       $des = "disabled";
        $txtbtn="Regresar";
        return view("puestos/frm", compact("puestos", 'puesto', 'accion', 'des', 'txtbtn'));
    }

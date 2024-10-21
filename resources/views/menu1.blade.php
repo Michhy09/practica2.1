@@ -69,6 +69,14 @@
         .dropdown-menu .nav-link {
             color: #0d0d0e; /* Color de la letra en las opciones del menú desplegable */
         }
+        .pagination {
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+}
+
+.pagination .page-link {
+    padding: 8px 16px; /* Ajusta el espacio alrededor de los enlaces */
+    font-size: 14px;   /* Ajusta el tamaño de los enlaces */
+}
     </style>
 </head>
 <body>
@@ -95,14 +103,14 @@
                         Catálogos
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="nav-item"><a class="nav-link" href="#periodos">Periodos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('periodos.index') }}">Periodos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('plazas.index') }}">Plazas</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('puestos.index') }}">Puestos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#personal">Personal</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('depto.index') }}">Deptos.</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('carrera.index') }}">Carreras</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#reticulas">Retículas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#materias">Materias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('reticulas.index') }}">Retículas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('materias.index') }}">Materias</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('alumnos.index') }}">Alumnos</a></li>
                     </ul>
                 </li>

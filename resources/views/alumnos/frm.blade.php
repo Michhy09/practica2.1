@@ -69,21 +69,33 @@
         @enderror
     </div>
 
+    <!-- Campo para Carrera -->
     <div class="col-md-6">
-        <label for="carrera" class="form-label text-start">Carrera:</label>
-        <input type="text" class="form-control" id="carrera" name="carrera" value="{{ old('carrera', $alumno->carrera ?? '') }}" {{ $des }} >
-        @error("carrera")
+        <label for="carrera_id" class="form-label text-start">Carrera:</label>
+        <select class="form-control" id="carrera_id" name="carrera_id" {{ $des }}>
+            <option value="" disabled {{ old('carrera_id', $alumno->carrera_id ?? '') ? '' : 'selected' }}>Seleccione una carrera</option>
+            @foreach ($carreras as $carrera)
+                <option value="{{ $carrera->id }}" {{ old('carrera_id', $alumno->carrera_id ?? '') == $carrera->id ? 'selected' : '' }}>
+                    {{ $carrera->nombrecarrera }} <!-- Asegúrate de que este sea el nombre correcto -->
+                </option>
+            @endforeach
+        </select>
+        @error("carrera_id")
             <p class="text-danger">Error en: {{ $message }}</p>
         @enderror
     </div>
 </div>
 
+</div>
+
 <div class="row mb-3">
     <div class="col-sm-12">
         <button type="submit" class="btn btn-primary">{{$txtbtn}}</button>
+        @if ($accion == 'C' || $accion == 'E') <!-- Mostrar botón de regresar solo en 'C' y 'E' -->
+            <a href="{{ route('alumnos.index') }}" class="btn btn-secondary">Regresar</a>
+        @endif
     </div>
 </div>
-
 
 </form>
 

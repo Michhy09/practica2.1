@@ -10,7 +10,7 @@
     <form action="{{ route('depto.update', $depto->id) }}" method="POST">
 @elseif ($accion == 'D')
    
-    <form action="{{ route('depto.destroy', $depto->id) }}" method="POST">
+    <form action="{{ route('depto.index', $depto->id) }}" method="get">
         
 @endif
 
@@ -58,16 +58,12 @@
         <button type="submit" class="btn btn-primary">{{$txtbtn}}</button>
         
     </div>
-    <br>
-    <div class="col-sm-5">
-        <a href="{{ route('depto.index') }}" class="btn btn-secondary">Regresar</a>
-    </div>
-
+    
 
 </form>
-@section("contenido2")
+
 @include("depto/tablahtml")
-@endsection
+
 
 
 @endsection

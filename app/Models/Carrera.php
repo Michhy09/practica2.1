@@ -10,14 +10,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Carrera extends Model
 {
     use HasFactory;
-    protected $fillable =['idcarrera', 'nombrecarrera', 'nombremediano', 'nombrecorto' ];
-
+    protected $fillable = ['idcarrera', 'nombrecarrera', 'nombrecorto', 'nombremediano', 'depto_id'];
 
     public function alumnos():HasMany{
         return $this ->hasMany(Alumno::class);
     }
+   
 
     public function depto():BelongsTo{
         return $this ->belongsTo(Depto::class);
+    }
+
+    public function reticulas()
+    {
+        return $this->hasMany(Reticula::class, 'idCarrera');
     }
 }

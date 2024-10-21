@@ -16,8 +16,7 @@ class AlumnoController extends Controller
             'apellidop' => 'required',
             'apellidom' => 'required',
             'sexo' => 'required',
-            'carrera'  => 'required',
-            
+            'carrera_id' => 'required',
             
       ];
     }
@@ -28,10 +27,12 @@ class AlumnoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $alumnos = Alumno::paginate(5);
-        return view("alumnos/index", compact("alumnos"));
-    }
+{
+    $alumnos = Alumno::with('carrera')->simplePaginate(5); // Carga los alumnos con sus carreras
+    $carreras = Carrera::all(); // Carga todas las carreras si las necesitas
+    return view("alumnos.index", compact("alumnos", "carreras")); // Pasa ambas variables
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -40,13 +41,23 @@ class AlumnoController extends Controller
     {
         $alumnos = Alumno::paginate(5);
         $alumno = new Alumno();
+        $carreras = Carrera::all(); // Obtener todas las carreras
         $accion = "C";
         $txtbtn = "Insertar";
         $des = "";
-        return view("alumnos/frm" , compact("alumnos", "alumno", "accion", 'txtbtn', 'des'));
-
+        return view("alumnos/frm", compact("alumnos", "alumno", "accion", 'txtbtn', 'des', 'carreras')); // Agrega 'carreras' al compact
     }
-
+    
+    public function edit(Alumno $alumno)
+    {
+        $alumnos = Alumno::paginate(5);
+        $carreras = Carrera::all(); // Obtener todas las carreras
+        $accion = "E";
+        $txtbtn = "Actualizar";
+        $des = "";
+        return view("alumnos/frm", compact("alumnos", 'alumno', "accion", 'txtbtn', 'des', 'carreras')); // Agrega 'carreras' al compact
+    }
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -65,25 +76,14 @@ class AlumnoController extends Controller
    public function show(Alumno $alumno)
    {
        $alumnos = Alumno::paginate(5);
+       $carreras = Carrera::all();
        $accion = "D"; // Acción para mostrar detalles
-       $des = "";
+       $des = "disabled";
        $txtbtn="Regresar";
-       return view("alumnos/frm", compact("alumnos", 'alumno', 'accion', 'des', 'txtbtn'));
+       return view("alumnos/frm", compact("alumnos", 'alumno', 'accion', 'des', 'txtbtn', 'carreras'));
    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Alumno $alumno)
-    {
-
-        $alumnos = Alumno::paginate(5);
-        $accion = "E";
-        $txtbtn = "Actualizar";
-        $des = "";
-        return view("alumnos/frm", compact("alumnos", 'alumno', "accion", 'txtbtn', 'des'));
-    }
-
+   
     /**
      * Update the specified resource in storage.
      */

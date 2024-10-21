@@ -8,7 +8,10 @@ use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReticulaController;
 
 Route::get('/', function () {
     return view('menu1');
@@ -20,7 +23,7 @@ Route::get('/alumnos.create', [AlumnoController::class, 'create'])->name('alumno
 Route::post('/alumnos.store', [AlumnoController::class, 'store'])->name('alumnos.store');
 
 Route::get('/alumnos.ver/{alumno}', [AlumnoController::class, 'show'])->name('alumnos.ver');
-Route::get('/alumnos.destroy/{alumno}', [AlumnoController::class, 'destroy'])->name('alumnos.destroy');
+Route::delete('/alumnos.destroy/{alumno}', [AlumnoController::class, 'destroy'])->name('alumnos.destroy');
 
 
 Route::post('/alumnos.update/{alumno}', [AlumnoController::class, 'update'])->name('alumnos.update');
@@ -34,7 +37,7 @@ Route::get('/puestos.create', [PuestoController::class, 'create'])->name('puesto
 Route::post('/puestos.store', [PuestoController::class, 'store'])->name('puestos.store');
 
 Route::get('/puestos.ver/{puesto}', [PuestoController::class, 'show'])->name('puestos.ver');
-Route::get('/puestos.destroy/{puesto}', [PuestoController::class, 'destroy'])->name('puestos.destroy');
+Route::delete('/puestos.destroy/{puesto}', [PuestoController::class, 'destroy'])->name('puestos.destroy');
 
 
 Route::post('/puestos.update/{puesto}', [PuestoController::class, 'update'])->name('puestos.update');
@@ -48,7 +51,7 @@ Route::get('/plazas.create', [PlazaController::class, 'create'])->name('plazas.c
 Route::post('/plazas.store', [PlazaController::class, 'store'])->name('plazas.store');
 
 Route::get('/plazas.ver/{plaza}', [PlazaController::class, 'show'])->name('plazas.ver');
-Route::get('/plazas.destroy/{plaza}', [PlazaController::class, 'destroy'])->name('plazas.destroy');
+Route::delete('/plazas.destroy/{plaza}', [PlazaController::class, 'destroy'])->name('plazas.destroy');
 
 
 Route::post('/plazas.update/{plaza}', [PlazaController::class, 'update'])->name('plazas.update');
@@ -75,14 +78,54 @@ Route::get('/carrera.create', [CarreraController::class, 'create'])->name('carre
 Route::post('/carrera.store', [CarreraController::class, 'store'])->name('carrera.store');
 
 Route::get('/carrera.ver/{carrera}', [CarreraController::class, 'show'])->name('carrera.ver');
-Route::get('/carrera.destroy/{carrera}', [CarreraController::class, 'destroy'])->name('carrera.destroy');
+Route::delete('/carrera.destroy/{carrera}', [CarreraController::class, 'destroy'])->name('carrera.destroy');
 
 
 Route::post('/carrera.update/{carrera}', [CarreraController::class, 'update'])->name('carrera.update');
 Route::get('/carrera.editar/{carrera}', [CarreraController::class, 'edit'])->name('carrera.editar');
 
 
+//PERIODOS//
+Route::get('/periodos.index', [PeriodoController::class, 'index'])->name('periodos.index');
 
+Route::get('/periodos.create', [PeriodoController::class, 'create'])->name('periodos.create');
+Route::post('/periodos.store', [PeriodoController::class, 'store'])->name('periodos.store');
+
+Route::get('/periodos.ver/{periodo}', [PeriodoController::class, 'show'])->name('periodos.ver');
+Route::delete('/periodos.destroy/{periodo}', [PeriodoController::class, 'destroy'])->name('periodos.destroy');
+
+
+Route::post('/periodos.update/{periodo}', [PeriodoController::class, 'update'])->name('periodos.update');
+Route::get('/periodos.editar/{periodo}', [PeriodoController::class, 'edit'])->name('periodos.editar');
+
+
+//RETICULAS//
+Route::get('/reticulas.index', [ReticulaController::class, 'index'])->name('reticulas.index');
+
+Route::get('/reticulas.create', [ReticulaController::class, 'create'])->name('reticulas.create');
+Route::post('/reticulas.store', [ReticulaController::class, 'store'])->name('reticulas.store');
+
+Route::get('/reticulas.ver/{reticula}', [ReticulaController::class, 'show'])->name('reticulas.ver');
+Route::delete('/reticulas.destroy/{reticula}', [ReticulaController::class, 'destroy'])->name('reticulas.destroy');
+
+
+Route::post('/reticulas.update/{reticula}', [ReticulaController::class, 'update'])->name('reticulas.update');
+Route::get('/reticulas.editar/{reticula}', [ReticulaController::class, 'edit'])->name('reticulas.editar');
+
+
+
+//MATERIAS//
+Route::get('/materias.index', [MateriaController::class, 'index'])->name('materias.index');
+
+Route::get('/materias.create', [MateriaController::class, 'create'])->name('materias.create');
+Route::post('/materias.store', [MateriaController::class, 'store'])->name('materias.store');
+
+Route::get('/materias.ver/{materia}', [MateriaController::class, 'show'])->name('materias.ver');
+Route::delete('/materias.destroy/{materia}', [MateriaController::class, 'destroy'])->name('materias.destroy');
+
+
+Route::post('/materias.update/{materia}', [MateriaController::class, 'update'])->name('materias.update');
+Route::get('/materias.editar/{materia}', [MateriaController::class, 'edit'])->name('materias.editar');
 
 
 Route::get('/dashboard', function () {

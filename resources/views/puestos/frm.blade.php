@@ -43,10 +43,17 @@
         @enderror
     </div>
 <br>
-    <div class="col-sm-5">
+    
+
+<div class="row mb-3">
+    <div class="col-sm-12">
         <button type="submit" class="btn btn-primary">{{$txtbtn}}</button>
-        
+        @if ($accion == 'C' || $accion == 'E') <!-- Mostrar botón de regresar solo en 'C' y 'E' -->
+            <a href="{{ route('puestos.index') }}" class="btn btn-secondary">Regresar</a>
+        @endif
     </div>
+</div>
+
     <br>
     
 

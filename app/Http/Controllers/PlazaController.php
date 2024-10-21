@@ -55,7 +55,7 @@ class PlazaController extends Controller
    {
        $plazas = Plaza::paginate(5);
        $accion = "D"; // Acción para mostrar detalles
-       $des = "";
+       $des = "disabled";
        $txtbtn="Regresar";
        return view("plazas/frm", compact("plazas", 'plaza', 'accion', 'des', 'txtbtn'));
    }

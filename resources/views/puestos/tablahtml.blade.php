@@ -26,7 +26,21 @@
                     <td>{{ $puesto->nombre}}</td>
                     <td>{{ $puesto->tipo}}</td>
                     <td><a href="{{route('puestos.editar',  $puesto->id)}}" class="btn btn-outline-dark btn-sm">Editar</a></td>
-                    <td><a href="{{route('puestos.destroy', $puesto->id)}}" class="btn btn-outline-dark btn-sm">Eliminar</a></td>
+                    
+                    <td>
+                        <a href="{{ route('puestos.destroy', $puesto->id) }}" 
+                           class="btn btn-outline-dark btn-sm" 
+                           onclick="event.preventDefault(); if(confirm('¿Estás seguro de que deseas eliminar este Puesto?')) { document.getElementById('delete-form-{{ $puesto->id }}').submit(); }">
+                            Eliminar
+                        </a>
+                    
+                        <!-- Formulario oculto para enviar la petición DELETE -->
+                        <form id="delete-form-{{ $puesto->id }}" action="{{ route('puestos.destroy', $puesto->id) }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                    </td>
+    
                     <td><a href="{{route('puestos.ver', $puesto->id)}}" class="btn btn-outline-dark btn-sm">Ver</a></td>
                 </tr>
                 @endforeach

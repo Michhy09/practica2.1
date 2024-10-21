@@ -19,21 +19,36 @@
                 <th scope="col">Nombre mediano</th>
                 <th scope="col">Nombre corto</th>
                
-                <th scope="col">ID Depto</th>
+                <th scope="col">Depto</th>
                 <th scope="col" colspan="3" class="text-center"></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($carreras as $carrera)
             <tr>
-                <td scope="row">{{ $carrera->noctrl }}</td>
-                <td>{{ $carrera->nombre }}</td>
+                <td scope="row">{{ $carrera->idcarrera }}</td>
+                <td>{{ $carrera->nombrecarrera }}</td>
                 <td>{{ $carrera->nombremediano }}</td>
-                <td>{{ $carrera->nombrecorto }}</td>
-               
-                <td>{{ $carrera->iddepto }}</td>
+                <td>{{ $carrera->nombrecorto }}</td> 
+                <td>{{ $carrera->depto->nombredepto }}</td> 
+
                 <td><a href="{{route('carrera.editar',  $carrera->id)}}" class="btn btn-outline-dark btn-sm">Editar</a></td>
-                <td><a href="{{route('carrera.destroy', $carrera->id)}}" class="btn btn-outline-dark btn-sm">Eliminar</a></td>
+                
+                <td>
+                    <a href="{{ route('carrera.destroy', $carrera->id) }}" 
+                       class="btn btn-outline-dark btn-sm" 
+                       onclick="event.preventDefault(); if(confirm('¿Estás seguro de que deseas eliminar esta Carrera?')) { document.getElementById('delete-form-{{ $carrera->id }}').submit(); }">
+                        Eliminar
+                    </a>
+                
+                    <!-- Formulario oculto para enviar la petición DELETE -->
+                    <form id="delete-form-{{ $carrera->id }}" action="{{ route('carrera.destroy', $carrera->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                </td>
+
+
                 <td><a href="{{route('carrera.ver', $carrera->id)}}" class="btn btn-outline-dark btn-sm">Ver</a></td>
             </tr>
             @endforeach

@@ -1,3 +1,14 @@
+<style>
+.pagination {
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+}
+
+.pagination .page-link {
+    padding: 8px 16px; /* Ajusta el espacio alrededor de los enlaces */
+    font-size: 14px;   /* Ajusta el tamaño de los enlaces */
+}
+
+</style>
 
 <br>
 <h1>Departamentos</h1>
@@ -13,7 +24,7 @@
                 <tr>
                     <th></th>
                     <th scope="col">ID Depto</th>
-                    <th scope="col">Nombre Departamento</th>
+                    <th scope="col">Nombre Depto</th>
                     <th scope="col">Nombre mediano</th>
                     <th scope="col">Nombre corto</th>
                     <th scope="col" colspan="3" class="text-center"></th>
@@ -50,5 +61,7 @@
             </tbody>
         </table>
 
-        {{$deptos->links()}}
+       
     </div>
+
+     {{$deptos->links()}}

@@ -21,7 +21,7 @@ class DeptoController extends Controller
 
     public function index()
     {
-        $deptos = Depto::paginate(5);
+        $deptos = Depto::simplePaginate(5);
         return view("depto/index", compact("deptos"));
     }
 
@@ -30,7 +30,7 @@ class DeptoController extends Controller
      */
     public function create()
     {
-        $deptos = Depto::paginate(5);
+        $deptos = Depto::simplePaginate(5);
         $depto = new Depto();
         $accion = "C";
         $txtbtn = "Insertar";
@@ -55,12 +55,14 @@ class DeptoController extends Controller
      */
     public function show(Depto $depto)
     {
-        $deptos = Depto::paginate(5);
+        $deptos = Depto::simplePaginate(5);
         $accion = "D";
-        $txtbtn = "Confirmar la eliminacion";
+        $txtbtn = "Regresar";
         $des = "disabled";
         return view("depto/frm" , compact("deptos", 'depto','txtbtn', 'accion', 'des'));
     }
+   
+ 
 
     /**
      * Show the form for editing the specified resource.
