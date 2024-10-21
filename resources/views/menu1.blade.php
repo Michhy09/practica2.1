@@ -12,71 +12,100 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* Color de fondo general */
+            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            text-align: center;
         }
+
         header, footer {
             width: 100%;
-            background-color: black; /* Color del encabezado y pie de página */
+            background-color: black;
             color: white;
             padding: 10px;
             text-align: center;
         }
-        nav {
-            background-color: black; /* Color del menú */
-        }
+
         .container {
             flex: 1;
-            padding: 20px;
             display: flex;
+            text-align: center;
             justify-content: center;
-            align-items: flex-start;
+            padding: 20px;
+            max-width: 100%; /* Ajusta el ancho máximo del contenedor */
+            margin: 0 auto; /* Centra el contenedor */
         }
+
         .sidebar {
-            width: 20%;
-            background-color: black; /* Color de la barra lateral */
+            width: 25%; /* Ancho de la barra lateral aumentado */
+            background-color: black;
             color: white;
             padding: 10px;
             border-radius: 5px;
-        }
-        .sidebar h2 {
+            position: sticky;
             text-align: center;
+            height: 100vh;
         }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            color: #ffdd57;
+        }
+
         .main-content {
+            text-align: center;
+            justify-content: center;
             flex: 1;
             padding: 20px;
-            background-color: white; /* Color del contenido principal */
+            background-color: white;
             border-radius: 5px;
-            max-width: 80%;
-            text-align: center;
+            max-width: 75%; /* Ajusta el ancho máximo del contenido principal */
+            text-align: left; /* Alineación a la izquierda */
         }
+
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto;
+        }
+
         footer a {
-            color: #ffdd57; /* Color de los enlaces del pie de página */
+            color: #ffdd57;
             text-decoration: none;
             margin: 0 10px;
         }
+
         .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
-        .dropdown-menu .nav-item {
-            margin: 0 10px; /* Espaciado horizontal entre los elementos */
-        }
-        .dropdown-menu .nav-link {
-            color: #0d0d0e; /* Color de la letra en las opciones del menú desplegable */
-        }
-        .pagination {
-    font-size: 14px; /* Ajusta el tamaño de la fuente */
-}
 
-.pagination .page-link {
-    padding: 8px 16px; /* Ajusta el espacio alrededor de los enlaces */
-    font-size: 14px;   /* Ajusta el tamaño de los enlaces */
-}
+        .pagination {
+            font-size: 14px;
+        }
+
+        .pagination .page-link {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
     </style>
 </head>
 <body>
@@ -94,32 +123,14 @@
                 <li class="nav-item"><a class="nav-link" href="#contacto">Contáctanos</a></li>
                 <li class="nav-item"><a class="nav-link" href="#ayuda">Ayuda</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Registrar Usuario</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Registrar Usuario</a></li>
                 @else
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Catálogos
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('periodos.index') }}">Periodos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('plazas.index') }}">Plazas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('puestos.index') }}">Puestos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#personal">Personal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('depto.index') }}">Deptos.</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('carrera.index') }}">Carreras</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('reticulas.index') }}">Retículas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('materias.index') }}">Materias</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('alumnos.index') }}">Alumnos</a></li>
-                    </ul>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Horarios
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="d-flex justify-content-around">
+                        <li class="">
                             <a class="dropdown-item" href="#">Docentes</a>
                             <a class="dropdown-item" href="">Alumnos</a>
                         </li>
@@ -130,7 +141,7 @@
                         Proyectos Individuales
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="d-flex justify-content-around">
+                        <li class="">
                             <a class="dropdown-item" href="#">Capacitación</a>
                             <a class="dropdown-item" href="#">Asesorías Doc.</a>
                             <a class="dropdown-item" href="#">Proyectos</a>
@@ -141,7 +152,6 @@
                         </li>
                     </ul>
                 </li>
-                
                 <li class="nav-item"><a class="nav-link" href="#instrumentacion">Instrumentación</a></li>
                 <li class="nav-item"><a class="nav-link" href="#tutorias">Tutorías</a></li>
                 <li class="nav-item">
@@ -162,9 +172,23 @@
         </div>
     </nav>
 </header>
-
+@auth
 <div class="container mt-4">
-
+    <div class="sidebar">
+        <h2>Catálogos</h2>
+        <ul>
+            <li><a class="nav-link" href="{{ route('periodos.index') }}">Periodos</a></li>
+            <li><a class="nav-link" href="{{ route('plazas.index') }}">Plazas</a></li>
+            <li><a class="nav-link" href="{{ route('puestos.index') }}">Puestos</a></li>
+            <li><a class="nav-link" href="#personal">Personal</a></li>
+            <li><a class="nav-link" href="{{ route('depto.index') }}">Deptos.</a></li>
+            <li><a class="nav-link" href="{{ route('carrera.index') }}">Carreras</a></li>
+            <li><a class="nav-link" href="{{ route('reticulas.index') }}">Retículas</a></li>
+            <li><a class="nav-link" href="{{ route('materias.index') }}">Materias</a></li>
+            <li><a class="nav-link" href="{{ route('alumnos.index') }}">Alumnos</a></li>
+        </ul>
+    </div>
+    @endauth
     <div class="main-content">
         @guest
         <h1>Bienvenido a la WebApp</h1>
@@ -173,7 +197,7 @@
         @auth
         <div class="main-content">
             @yield('contenido1')
-            @yield('contenido2') <!-- Aquí se mostrará el contenido de la sección 'contenido1' -->
+            @yield('contenido2')
         </div>
         @endauth
     </div>
@@ -187,7 +211,11 @@
         <a href="https://nodejs.org/" target="_blank">Node.js</a>
         <a href="https://www.npmjs.com/" target="_blank">NPM</a>
         <a href="https://laravel.com/docs/eloquent" target="_blank">Eloquent</a>
+        <a href="https://laravel.com/docs/migrations" target="_blank">Migrations</a>
         <a href="https://laravel.com/docs/blade" target="_blank">Blade</a>
+        <a href="https://laravel.com/docs/middleware" target="_blank">Middleware</a>
+        <a href="https://laravel.com/docs" target="_blank">Laravel</a>
+        <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">Bootstrap</a>
     </div>
     @endguest
     @auth
@@ -198,7 +226,6 @@
 
 </body>
 </html>
-
 
 
 
