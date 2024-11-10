@@ -8,107 +8,96 @@ use Illuminate\Http\Request;
 
 class MateriaController extends Controller
 {
-    public $val;
-    public function __construct(){
-      $this-> val = [
-    'idmateria' => 'required',
-    'nombre' => 'required',
-    'nivel' => 'required',
-    'nombremediano' => 'required',
-    'nombrecorto' => 'required',
-    'modalidad' => 'required',
-    'idReticula' => 'required',
-    
-   
-    
-];
-}
+  public $val;
 
-/**
-* Display a listing of the resource.
-*/
-public function index()
+  public function __construct()
+  {
+      $this->val = [
+          'idmateria' => ['required'],
+          'nombre' => 'required',
+          'nivel' => 'required',
+          'nombremediano' => 'required',
+          'nombrecorto' => 'required',
+          'modalidad' => 'required',
+          'idReticula' => 'required'
+      ];
+  }
+
+  // Mostrar la lista de materias
+  public function index()
+  {
+      $materias = Materia::simplePaginate(5);
+      return view("materias.index", compact("materias"));
+  }
+
+  /**
+   * Mostrar el formulario para crear una nueva materia.
+   */
+  public function create()
 {
-$materias = Materia::with('reticula')->simplePaginate(5); 
-return view("materias/index", compact("materias"));
+    $materias = Materia::simplePaginate(5);
+    $materia = new Materia();  // Iniciar un objeto vacío para crear una nueva materia
+    $accion = "C";  // Acción para la vista (puedes usar esto para mostrar "Crear" en el formulario)
+    $txtbtn = "Insertar";  // Texto del botón para el formulario
+    $des = "";  // Un string vacío para el campo disabled si es necesario
+    $reticulas = Reticula::all();  // Obtener todas las retículas disponibles
+
+    return view("materias.frm", compact("materia", "accion", 'txtbtn', 'des', 'reticulas', 'materias'));
 }
 
-/**
-* Show the form for creating a new resource.
-*/
-public function create()
-{
-$materias = Materia::simplePaginate(5);
-$reticulas = Reticula::all(); // Obtener todos los departamentos
+  /**
+   * Almacenar la nueva materia en la base de datos.
+   */
+  public function store(Request $request)
+  {
+      $val = $request->validate($this->val);
+      Materia::create($val);
+      return redirect()->route("materias.index")->with("mensaje", "Materia insertada correctamente. :) ");
+  }
 
-$materia = new Materia();
-$accion = "C";
-$txtbtn = "Insertar";
-$des = "";
-return view("materias/frm", compact("materias", "materia", "reticulas", "accion", "txtbtn", "des"));
-}
+  /**
+   * Mostrar los detalles de una materia específica.
+   */
+  public function show(Materia $materia)
+  {
+    $materias = Materia::simplePaginate(5);
+      $accion = "D"; // Acción para mostrar detalles
+      $des = "disabled";
+      $txtbtn = "Regresar";
+      $reticulas = Reticula::all(); // Obtener todas las retículas disponibles
+      return view("materias.frm", compact('materia', 'accion', 'des', 'txtbtn', 'reticulas', 'materias'));
+  }
 
+  /**
+   * Mostrar el formulario para editar una materia.
+   */
+  public function edit(Materia $materia)
+  {
+    $materias = Materia::simplePaginate(5);
+      $accion = "E";
+      $txtbtn = "Actualizar";
+      $des = "";
+      $reticulas = Reticula::all(); // Obtener todas las retículas disponibles
+      return view("materias.frm", compact('materia', 'accion', 'txtbtn', 'des', 'reticulas', 'materias'));
+  }
 
+  /**
+   * Actualizar la materia en la base de datos.
+   */
+  public function update(Request $request, Materia $materia)
+  {
+      $val = $request->validate($this->val);
+      $materia->update($val);
+      return redirect()->route("materias.index")->with("mensaje", "Materia actualizada correctamente. :) ");
+  }
 
-/**
-* Store a newly created resource in storage.
-*/
-public function store(Request $request)
-{
+  /**
+   * Eliminar una materia de la base de datos.
+   */
+  public function destroy(Materia $materia)
+  {
+      $materia->delete();
+      return redirect()->route("materias.index")->with("mensaje", "Materia eliminada correctamente. :) ");
+  }
 
-$val = $request->validate($this->val);
-Materia::create($val);
-return redirect()->route("materias.index")->with("mensaje", "Se insertó correctamente. :) ");
-}
-
-
-
-/**
-* Display the specified resource.
-*/
-public function show(Materia $materia)
-{
-$materias = Materia::simplePaginate(5);
-$reticulas = Reticula::all(); // Obtener todos los departamentos
-$accion = "D";
-$txtbtn = "Regresar";
-$des = "disabled";
-return view("materias/frm" , compact("materias", 'materia','txtbtn', 'accion', 'des', 'reticulas'));
-}
-
-/**
-* Show the form for editing the specified resource.
-*/
-public function edit(Materia $materia)
-{
-
-$materias = Materia::simplePaginate(5);
-$reticulas = Reticula::all(); // Obtener todos los departamentos
-$accion = "E"; // Indicador de que se está editando
-$txtbtn = "Actualizar"; // Texto del botón
-$des = ""; // Habilitar campos
-return view("materias/frm", compact("materias", "materia", "reticulas", "accion", "txtbtn", "des"));
-}
-
-
-
-/**
-* Update the specified resource in storage.
-*/
-public function update(Request $request, Materia $materia)
-{
-$val = $request->validate($this->val);
-$materia->update($val);
-return redirect()->route("materias.index")->with("mensaje", "Se actualizó correctamente. :) ");
-}
-
-
-/**
-* Remove the specified resource from storage.
-*/
-public function destroy(Materia $materia)
-{
-$materia->delete();
-return redirect()->route("materias.index");
-}
 }

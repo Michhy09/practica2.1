@@ -10,22 +10,19 @@ use App\Models\Depto;
  */
 class CarreraFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    
+
     public function definition(): array
     {
-        $titulo = fake()->unique()->jobTitle();
         return [
-            "idcarrera"=>fake()->unique()->bothify("????####"),
-            "nombrecarrera"=>$titulo,
-            "nombremediano"=>fake()->lexify(str_repeat("?",15)),
-            "nombrecorto"=>substr($titulo,0,5),
-            "depto_id"=>Depto::factory()
-];
-
+            'idcarrera' => $this->faker->unique()->bothify('ITPN##'),
+            'nombrecarrera' => $this->faker->sentence(3),
+            'nombremediano' => $this->faker->sentence(2),
+            'nombrecorto' => $this->faker->regexify('[A-Z]{2,5}'),
+            'depto_id' => Depto::inRandomOrder()->first()->id, // Departamento aleatorio
+        ];
     }
+    
+    
 }
 

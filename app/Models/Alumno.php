@@ -12,7 +12,10 @@ class Alumno extends Model
     use HasFactory;
     protected $fillable = ['nombre', 'apellidop', 'apellidom', 'noctrl', 'sexo', 'carrera_id'];
 
-    public function carrera():BelongsTo{
-        return $this ->belongsTo(Carrera::class);
+   
+
+    public function carrera()
+    {
+        return $this->belongsTo(Carrera::class, 'carrera_id', 'idcarrera');
     }
 }

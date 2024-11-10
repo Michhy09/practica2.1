@@ -1,9 +1,11 @@
 <?php
-use App\Models\Alumno;
 use App\Models\Depto;
+use App\Models\Alumno;
 use App\Models\Carrera;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HoraController;
 use App\Http\Controllers\DeptoController;
+use App\Http\Controllers\LugarController;
 use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PuestoController;
@@ -11,7 +13,10 @@ use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EdificioController;
+use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ReticulaController;
+use App\Http\Controllers\PersonalPlazaController;
 
 Route::get('/', function () {
     return view('menu1');
@@ -112,6 +117,33 @@ Route::delete('/reticulas.destroy/{reticula}', [ReticulaController::class, 'dest
 Route::post('/reticulas.update/{reticula}', [ReticulaController::class, 'update'])->name('reticulas.update');
 Route::get('/reticulas.editar/{reticula}', [ReticulaController::class, 'edit'])->name('reticulas.editar');
 
+// PERSONAAAL
+Route::get('/personal.index', [PersonalController::class, 'index'])->name('personal.index');
+
+Route::get('/personal.create', [PersonalController::class, 'create'])->name('personal.create');
+Route::post('/personal.store', [PersonalController::class, 'store'])->name('personal.store');
+
+Route::get('/personal.ver/{persona}', [PersonalController::class, 'show'])->name('personal.ver');
+Route::delete('/personal.destroy/{persona}', [PersonalController::class, 'destroy'])->name('personal.destroy');
+
+
+Route::post('/personal.update/{persona}', [PersonalController::class, 'update'])->name('personal.update');
+Route::get('/personal.editar/{persona}', [PersonalController::class, 'edit'])->name('personal.editar');
+
+
+// PERSONAAAL-PLAZA
+Route::get('/personaPla.index', [PersonalPlazaController::class, 'index'])->name('personaPla.index');
+
+Route::get('/personaPla.create', [PersonalPlazaController::class, 'create'])->name('personaPla.create');
+Route::post('/personaPla.store', [PersonalPlazaController::class, 'store'])->name('personaPla.store');
+
+Route::get('/personaPla.ver/{personalPlaza}', [PersonalPlazaController::class, 'show'])->name('personaPla.ver');
+Route::delete('/personaPla.destroy/{personalPlaza}', [PersonalPlazaController::class, 'destroy'])->name('personaPla.destroy');
+
+
+Route::post('/personaPla.update/{personalPlaza}', [PersonalPlazaController::class, 'update'])->name('personaPla.update');
+Route::get('/personaPla.editar/{personalPlaza}', [PersonalPlazaController::class, 'edit'])->name('personaPla.editar');
+
 
 
 //MATERIAS//
@@ -126,6 +158,43 @@ Route::delete('/materias.destroy/{materia}', [MateriaController::class, 'destroy
 
 Route::post('/materias.update/{materia}', [MateriaController::class, 'update'])->name('materias.update');
 Route::get('/materias.editar/{materia}', [MateriaController::class, 'edit'])->name('materias.editar');
+
+
+//EDIFICIOS//
+Route::get('/edificio.index', [EdificioController::class, 'index'])->name('edificio.index');
+
+Route::get('/edificio.create', [EdificioController::class, 'create'])->name('edificio.create');
+Route::post('/edificio.store', [EdificioController::class, 'store'])->name('edificio.store');
+
+Route::get('/edificio.ver/{edificio}', [EdificioController::class, 'show'])->name('edificio.ver');
+Route::delete('/edificio.destroy/{edificio}', [EdificioController::class, 'destroy'])->name('edificio.destroy');
+
+
+Route::post('/edificio.update/{edificio}', [EdificioController::class, 'update'])->name('edificio.update');
+Route::get('/edificio.editar/{edificio}', [EdificioController::class, 'edit'])->name('edificio.editar');
+
+
+//LUGAR
+Route::get('/lugar.index', [LugarController::class, 'index'])->name('lugar.index');
+
+Route::get('/lugar.create', [LugarController::class, 'create'])->name('lugar.create');
+Route::post('/lugar.store', [LugarController::class, 'store'])->name('lugar.store');
+
+Route::get('/lugar.ver/{lugar}', [LugarController::class, 'show'])->name('lugar.ver');
+Route::delete('/lugar.destroy/{lugar}', [LugarController::class, 'destroy'])->name('lugar.destroy');
+
+Route::post('/lugar.update/{lugar}', [LugarController::class, 'update'])->name('lugar.update');
+Route::get('/lugar.editar/{lugar}', [LugarController::class, 'edit'])->name('lugar.editar');
+
+
+//HORAS
+Route::get('/hora.index', [HoraController::class, 'index'])->name('hora.index');
+Route::get('/hora.create', [HoraController::class, 'create'])->name('hora.create');
+Route::post('/hora.store', [HoraController::class, 'store'])->name('hora.store');
+Route::get('/hora.ver/{hora}', [HoraController::class, 'show'])->name('hora.ver');
+Route::delete('/hora.destroy/{hora}', [HoraController::class, 'destroy'])->name('hora.destroy');
+Route::post('/hora.update/{hora}', [HoraController::class, 'update'])->name('hora.update');
+Route::get('/hora.editar/{hora}', [HoraController::class, 'edit'])->name('hora.editar');
 
 
 Route::get('/dashboard', function () {

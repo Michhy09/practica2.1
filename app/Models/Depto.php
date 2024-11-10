@@ -15,4 +15,9 @@ class Depto extends Model
     public function carreras():HasMany{
         return $this ->hasMany(Carrera::class);
     }
+
+    public function personals()
+    {
+        return $this->hasMany(Personal::class); // Un departamento tiene muchos empleados
+    }
 }

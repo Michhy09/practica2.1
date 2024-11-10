@@ -13,6 +13,6 @@ class DeptoSeeder extends Seeder
      */
     public function run(): void
     {
-        Depto::factory(5)->create();
+        Depto::factory(10)->create();
     }
 }

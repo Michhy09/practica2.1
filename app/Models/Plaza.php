@@ -11,4 +11,8 @@ class Plaza extends Model
     use HasFactory;
     protected $fillable =['idplaza', 'nombrePlaza' ];
 
+    public function personals()
+    {
+        return $this->belongsToMany(Personal::class, 'personal_plaza', 'plaza_id', 'personal_id');
+    }
 }

@@ -17,8 +17,6 @@ class PlazaFactory extends Factory
     public function definition(): array
     {
         return [
-            'idplaza' => fake()->bothify("???##"),
-            'nombrePlaza' => fake()->jobTitle(),
            
         ];
     }

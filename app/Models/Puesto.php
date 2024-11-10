@@ -10,4 +10,9 @@ class Puesto extends Model
     use HasFactory;
     protected $fillable =['idpuesto', 'nombre', 'tipo' ];
 
+    public function personals()
+    {
+        return $this->hasMany(Personal::class); // Un puesto tiene muchos empleados
+    }
+
 }

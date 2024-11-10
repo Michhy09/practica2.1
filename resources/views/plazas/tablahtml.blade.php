@@ -12,7 +12,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th></th>
-                    <th scope="col">ID puesto</th>
+                    <th scope="col">ID plaza</th>
                     <th scope="col">Nombre Plaza</th>
                     
                     <th scope="col" colspan="3" class="text-center"></th>

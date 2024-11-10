@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('deptos', function (Blueprint $table) {
             $table->id();
-            $table->string('iddepto', 2)->unique();
+            $table->string('iddepto', 15)->unique();
             $table->string("nombredepto", 100)->unique();
-            $table->string('nombremediano', 15)->unique();
-            $table->string('nombrecorto', 5)->unique();
+            $table->string('nombremediano', 70)->unique();
+            $table->string('nombrecorto', 50)->unique();
             $table->timestamps();
         });
     }

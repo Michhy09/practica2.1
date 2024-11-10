@@ -180,12 +180,16 @@
             <li><a class="nav-link" href="{{ route('periodos.index') }}">Periodos</a></li>
             <li><a class="nav-link" href="{{ route('plazas.index') }}">Plazas</a></li>
             <li><a class="nav-link" href="{{ route('puestos.index') }}">Puestos</a></li>
-            <li><a class="nav-link" href="#personal">Personal</a></li>
+            <li><a class="nav-link" href="{{ route('personal.index') }}">Personal</a></li>
             <li><a class="nav-link" href="{{ route('depto.index') }}">Deptos.</a></li>
             <li><a class="nav-link" href="{{ route('carrera.index') }}">Carreras</a></li>
             <li><a class="nav-link" href="{{ route('reticulas.index') }}">Retículas</a></li>
             <li><a class="nav-link" href="{{ route('materias.index') }}">Materias</a></li>
             <li><a class="nav-link" href="{{ route('alumnos.index') }}">Alumnos</a></li>
+            <li><a class="nav-link" href="{{ route('personaPla.index') }}">Personal-Plaza</a></li>
+            <li><a class="nav-link" href="{{ route('edificio.index') }}">Edificio</a></li>
+            <li><a class="nav-link" href="{{ route('lugar.index') }}">Lugar</a></li>
+            <li><a class="nav-link" href="{{ route('hora.index') }}">Hora</a></li>
         </ul>
     </div>
     @endauth

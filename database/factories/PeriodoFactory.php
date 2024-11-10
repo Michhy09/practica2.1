@@ -17,12 +17,7 @@ class PeriodoFactory extends Factory
     public function definition(): array
     {
         return [
-        'idPeriodo' => fake()->bothify("??##"), // ID aleatorio
-        'periodo' => fake()->monthName(),
-        'descorta' => fake()->word(), // Solo una palabra, así te aseguras que no exceda los 10 caracteres
-        'fechaInicio' => $inicio = fake()->dateTimeBetween('now', '+1 year'), // Fecha de inicio
-        'fechaFin' => fake()->dateTimeBetween($inicio, '+2 years'), // Fecha de fin
-
+        
         ];
 
     }

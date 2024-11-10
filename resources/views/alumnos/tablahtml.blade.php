@@ -32,8 +32,13 @@
                 <td>{{ $alumno->apellidop }}</td>
                 <td>{{ $alumno->apellidom }}</td>
                 <td>{{ $alumno->sexo }}</td>
-                <td>{{ $alumno->carrera->nombrecarrera }}</td>
-                
+                <td>
+                @if($alumno->carrera) <!-- Verificar si existe la carrera -->
+                {{ $alumno->carrera->nombrecarrera }}
+            @else
+                Carrera no asignada
+            @endif
+                </td>
                 <td><a href="{{ route('alumnos.editar',  $alumno->id) }}" class="btn btn-outline-dark btn-sm">Editar</a></td>
                 
                 <td>

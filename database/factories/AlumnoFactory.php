@@ -20,12 +20,7 @@ class AlumnoFactory extends Factory
     {
         
         return [
-            'noctrl' => fake()->unique()->bothify("########"),
-            'nombre' => fake()->name(),
-            'apellidop' => fake()->lastName(),
-            'apellidom' => fake()->lastName(),
-            'sexo' => fake()->randomElement(['M','F']),
-            'carrera'=>fake()->bothify("???##"),
+           
 ];
 
 }

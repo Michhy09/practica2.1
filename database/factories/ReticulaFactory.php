@@ -19,12 +19,10 @@ class ReticulaFactory extends Factory
     public function definition(): array
     {
         return [
-            'idmateria' => fake()->regexify('[A-Z]{3}[0-9]{3}'), // Genera algo como MAT101
-            'nivel' => fake()->randomElement(['1', '2', '3']), // Nivel entre 1, 2 o 3
-            'nombremediano' => fake()->words(2), // Nombre de materia
-            'nombrecorto' => fake()->word(), // Nombre corto
-            'modalidad' => fake()->randomElement(['P', 'V', 'H']),
-            "idReticula"=>Reticula::factory()
+            'idreticula' => $this->faker->unique()->bothify('RET-###'),
+            'desc' => $this->faker->sentence(5),
+            'fechaVigor' => $this->faker->date(),
+            'idCarrera' => Carrera::inRandomOrder()->first()->id, // Carrera aleatoria
         ];
     }
 }
