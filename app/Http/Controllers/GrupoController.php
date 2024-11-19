@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Grupo;
 use App\Models\Carrera;
 use App\Models\Materia;
@@ -52,8 +51,6 @@ class GrupoController extends Controller
         'carrera_id' // Asegúrate de pasar las variables periodo_id y carrera_id correctamente
     ));
 }
-
-
 public function store(Request $request)
 {
     // Guardar en la sesión
