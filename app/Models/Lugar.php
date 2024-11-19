@@ -15,6 +15,9 @@ class Lugar extends Model
         'edificio_id',
     ];
 
+    protected $table = 'lugars'; // Nombre de la tabla en la base de datos
+
+
     /**
      * Relación con el modelo Edificio.
      * Un lugar pertenece a un edificio.

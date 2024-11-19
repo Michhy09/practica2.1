@@ -2,9 +2,12 @@
 use App\Models\Depto;
 use App\Models\Alumno;
 use App\Models\Carrera;
+use App\Models\GrupoHorario;
+use App\Models\MateriaAbierta;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HoraController;
 use App\Http\Controllers\DeptoController;
+use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\LugarController;
 use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\AlumnoController;
@@ -16,7 +19,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EdificioController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ReticulaController;
+use App\Http\Controllers\GrupoHorarioController;
 use App\Http\Controllers\PersonalPlazaController;
+use App\Http\Controllers\MateriaAbiertaController;
 
 Route::get('/', function () {
     return view('menu1');
@@ -196,6 +201,25 @@ Route::delete('/hora.destroy/{hora}', [HoraController::class, 'destroy'])->name(
 Route::post('/hora.update/{hora}', [HoraController::class, 'update'])->name('hora.update');
 Route::get('/hora.editar/{hora}', [HoraController::class, 'edit'])->name('hora.editar');
 
+//ASIGNACION DE MATERIAS
+
+
+Route::get('/matabi.index', [MateriaAbiertaController::class, 'index'])->name('matabi.index');
+
+
+Route::get('/asmateria', [GrupoController::class, 'index'])->name('asmateria.index');
+Route::post('/asmateria/store', [GrupoController::class, 'store'])->name('asmateria.store');
+Route::post('/asmateria/update', [GrupoController::class, 'updateHorario'])->name('asmateria.update');
+Route::post('/get-personals', [GrupoController::class, 'getPersonalsByCarrera'])->name('get.personals');
+
+//GUARDA Y ELIMINA HORARIO
+Route::post('/guardar-horario', [GrupoHorarioController::class, 'guardarHorario'])->name('guardar.horario');
+Route::post('/horario/eliminar', [GrupoHorarioController::class, 'eliminarHorario'])->name('eliminar.horario');
+
+
+Route::post('/materia_abierta/store', [MateriaAbiertaController::class, 'store'])->name('materia_abierta.storeMateria');
+
+Route::post('/asmateria/storeMateria', [GrupoController::class, 'storeMateria'])->name('asmateria.storeMateria');
 
 Route::get('/dashboard', function () {
     return view('menu1');

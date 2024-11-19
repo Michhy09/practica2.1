@@ -70,6 +70,26 @@
 </div>
 
 <div class="col-sm-5">
+    <!-- Campo para Semestre: Lista de opciones fijas -->
+    <label for="semestre" class="form-label">Semestre:</label>
+    <select class="form-control" id="semestre" name="semestre" {{$des}}>
+        <!-- Aquí puedes cambiar los valores de los semestres según lo necesites -->
+        <option value="1" {{ old('semestre', $materia->semestre) == '1' ? 'selected' : '' }}>1</option>
+        <option value="2" {{ old('semestre', $materia->semestre) == '2' ? 'selected' : '' }}>2</option>
+        <option value="3" {{ old('semestre', $materia->semestre) == '3' ? 'selected' : '' }}>3</option>
+        <option value="4" {{ old('semestre', $materia->semestre) == '4' ? 'selected' : '' }}>4</option>
+        <option value="5" {{ old('semestre', $materia->semestre) == '5' ? 'selected' : '' }}>5</option>
+        <option value="6" {{ old('semestre', $materia->semestre) == '6' ? 'selected' : '' }}>6</option>
+        <option value="7" {{ old('semestre', $materia->semestre) == '7' ? 'selected' : '' }}>7</option>
+        <option value="8" {{ old('semestre', $materia->semestre) == '8' ? 'selected' : '' }}>8</option>
+        <option value="9" {{ old('semestre', $materia->semestre) == '9' ? 'selected' : '' }}>9</option>
+    </select>
+    @error("semestre")
+        <p class="text-danger">Error en: {{ $message }}</p>
+    @enderror
+</div>
+
+<div class="col-sm-5">
     <!-- Campo para Retícula -->
     <label for="idReticula" class="form-label">Retícula:</label>
     <select class="form-control" id="idReticula" name="idReticula" {{$des}}>
@@ -84,8 +104,6 @@
         <p class="text-danger">Error en: {{ $message }}</p>
     @enderror
 </div>
-
-
 
 <br>
 
@@ -103,7 +121,3 @@
 @include("materias/tablahtml")
 
 @endsection
-
-
-
-

@@ -31,10 +31,11 @@ class Personal extends Model
     
 
    // En el modelo Personal
-public function depto()
-{
-    return $this->belongsTo(Depto::class);
-}
+   public function depto()
+   {
+       return $this->belongsTo(Depto::class, 'depto_id', 'iddepto');
+   }
+   
 
 public function puesto()
 {

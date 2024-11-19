@@ -17,8 +17,6 @@
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">RFC</th>
-            <th scope="col">Licenciatura</th>
-            <th scope="col">Departamento</th>
             <th scope="col">Puesto</th>
             <th scope="col" colspan="3" class="text-center"></th>
         </tr>
@@ -30,8 +28,6 @@
         <td scope="row">{{ $persona->id }}</td>
         <td>{{ $persona->nombres }} {{ $persona->apellidop }} {{ $persona->apellidom }}</td>
         <td>{{ $persona->RFC }}</td>
-        <td>{{ $persona->licenciatura }}</td>
-        <td>{{ $persona->depto->nombredepto }}</td>
         <td>{{ $persona->puesto->nombre }}</td>
 
         <!-- Botones de acción -->

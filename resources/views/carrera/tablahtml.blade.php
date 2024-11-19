@@ -19,7 +19,6 @@
                 <th scope="col">Nombre mediano</th>
                 <th scope="col">Nombre corto</th>
                
-                <th scope="col">Depto</th>
                 <th scope="col" colspan="3" class="text-center"></th>
             </tr>
         </thead>
@@ -30,7 +29,6 @@
                 <td>{{ $carrera->nombrecarrera }}</td>
                 <td>{{ $carrera->nombremediano }}</td>
                 <td>{{ $carrera->nombrecorto }}</td> 
-                <td>{{ $carrera->depto->nombredepto }}</td> 
 
                 <td><a href="{{route('carrera.editar',  $carrera->id)}}" class="btn btn-outline-dark btn-sm">Editar</a></td>
                 

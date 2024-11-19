@@ -20,7 +20,7 @@ class LugarSeeder extends Seeder
             $lugares[] = [
                 'nombrelugar' => "Salón {$i}K",
                 'nombrecorto' => "{$i}K",
-                'edificio_id' => 6, // ID del Edificio K
+                'edificio_id' => 4, // ID del Edificio K
             ];
         }
 
@@ -29,7 +29,7 @@ class LugarSeeder extends Seeder
             $lugares[] = [
                 'nombrelugar' => "Salón {$i}D",
                 'nombrecorto' => "{$i}D",
-                'edificio_id' => 19, // ID del Edificio D
+                'edificio_id' => 11, // ID del Edificio D
             ];
         }
 
@@ -43,7 +43,7 @@ class LugarSeeder extends Seeder
         ];
 
         foreach ($salas_sistemas as $sala) {
-            $lugares[] = array_merge($sala, ['edificio_id' => 14]); // ID del Edificio de Sistemas y Computación
+            $lugares[] = array_merge($sala, ['edificio_id' => 6]); // ID del Edificio de Sistemas y Computación
         }
 
         // Insertar todos los lugares en la tabla

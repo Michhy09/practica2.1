@@ -13,4 +13,10 @@ class Edificio extends Model
         'nombreedificio', // Nombre completo del edificio
         'nombrecorto',    // Nombre corto del edificio
     ];
+
+
+    public function lugares()
+    {
+        return $this->hasMany(Lugar::class);
+    }
 }

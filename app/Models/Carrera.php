@@ -17,12 +17,17 @@ class Carrera extends Model
     }
    
 
-    public function depto():BelongsTo{
-        return $this ->belongsTo(Depto::class);
-    }
+   
 
     public function reticulas()
     {
         return $this->hasMany(Reticula::class, 'idCarrera');
     }
+
+    public function depto()
+{
+    return $this->belongsTo(Depto::class, 'depto_id', 'iddepto');
+}
+
+
 }

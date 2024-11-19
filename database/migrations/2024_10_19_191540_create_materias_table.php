@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nombremediano', 25);
             $table->string('nombrecorto', 10);
             $table->char('modalidad', 1);
+            $table->integer('semestre');
             $table->foreignId('idReticula')->constrained('reticulas');        
             $table->timestamps();
         });

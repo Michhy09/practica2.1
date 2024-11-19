@@ -11,4 +11,10 @@ class Periodo extends Model
     use HasFactory;
 
     protected $fillable =['idPeriodo', 'periodo', 'descorta', 'fechaInicio', 'fechaFin' ];
+    // Modelo Periodo
+public function grupos()
+{
+    return $this->hasMany(Grupo::class, 'periodo_id', 'idPeriodo');
+}
+
 }

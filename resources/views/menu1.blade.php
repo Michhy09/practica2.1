@@ -190,6 +190,8 @@
             <li><a class="nav-link" href="{{ route('edificio.index') }}">Edificio</a></li>
             <li><a class="nav-link" href="{{ route('lugar.index') }}">Lugar</a></li>
             <li><a class="nav-link" href="{{ route('hora.index') }}">Hora</a></li>
+            <li><a class="nav-link" href="{{ route('matabi.index') }}">Materia Abierta</a></li>
+            <li><a class="nav-link" href="{{ route('asmateria.index') }}">Asignacion de materias</a></li>
         </ul>
     </div>
     @endauth

@@ -27,7 +27,7 @@ class PersonalSeeder extends Seeder
                 'doctorado' => 'Doctorado en Administración Educativa',
                 'doctit' => 1,
                 'depto_id' => 1, // Dirección General
-                'puesto_id' => 3, // Director
+                'puesto_id' => 2, // Director
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -40,7 +40,7 @@ class PersonalSeeder extends Seeder
                 'maestria' => 'Maestría en Planeación Educativa',
                 'maetit' => 1,
                 'depto_id' => 2, // Subdirección General
-                'puesto_id' => 4, // Subdirector Académico
+                'puesto_id' => 3, // Subdirector Académico
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -52,7 +52,7 @@ class PersonalSeeder extends Seeder
                 'maestria' => 'Maestría en Planeación Educativa',
                 'maetit' => 1,
                 'depto_id' => 2, // Subdirección General
-                'puesto_id' => 5, // Subdirector de Plantación
+                'puesto_id' => 3, // Subdirector de Plantación
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -64,7 +64,7 @@ class PersonalSeeder extends Seeder
                 'maestria' => 'Maestría en Educación',
                 'maetit' => 1,
                 'depto_id' => 2, // Subdirección General
-                'puesto_id' => 5, // Subdirector de Plantación
+                'puesto_id' => 4, // Subdirector de Plantación
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -76,8 +76,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'RET910101JKL',
                 'doctorado' => 'Doctorado en Ciencias Computacionales',
                 'doctit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -88,8 +88,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'ACS920202MNO',
                 'licenciatura' => 'Ingeniería en Sistemas Computacionales',
                 'lictit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -101,8 +101,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'FMRS930303PQR',
                 'maestria' => 'Maestría en Ciencias Computacionales',
                 'maetit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -113,8 +113,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'HPBH940404STU',
                 'maestria' => 'Maestría en Ciencias Computacionales',
                 'maetit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -125,8 +125,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'MGNL950505VWX',
                 'maestria' => 'Maestría en Ciencias Computacionales',
                 'maetit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -137,8 +137,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'WLBE50505VWX',
                 'licenciatura' => 'Ingeniería en Sistemas Computacionales',
                 'lictit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -149,8 +149,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'HECT50505VWX',
                 'licenciatura' => 'Ingeniería en Sistemas Computacionales',
                 'lictit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -161,8 +161,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'CASTR50505VWX',
                 'licenciatura' => 'Ingeniería en Sistemas Computacionales',
                 'lictit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -173,8 +173,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'AQUILS50505VWX',
                 'licenciatura' => 'Ingeniería en Sistemas Computacionales',
                 'lictit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
@@ -185,8 +185,8 @@ class PersonalSeeder extends Seeder
                 'RFC' => 'RIOJA50505VWX',
                 'licenciatura' => 'Ingeniería en Sistemas Computacionales',
                 'lictit' => 1,
-                'depto_id' => 1, // Ingeniería en Sistemas Computacionales
-                'puesto_id' => 2, // Profesor
+                'depto_id' => 3, // Ingeniería en Sistemas Computacionales
+                'puesto_id' => 1, // Profesor
                 'fechaingsep' => $fechaIngresoSEP,
                 'fechaingins' => $fechaIngresoINS,
             ],
