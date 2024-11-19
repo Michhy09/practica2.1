@@ -388,8 +388,6 @@
     });
     
     </script>
-    
-    
         @endsection
 
         <!-- Scripts FILTRAR PERSONAL -->
@@ -534,8 +532,6 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "{{ route('asmateria.index') }}?" + grupoData;
     });
 });
-
-
 </script>
 
 
