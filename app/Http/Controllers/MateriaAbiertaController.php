@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrera;
+use App\Models\Materia;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 use App\Models\MateriaAbierta;
@@ -37,53 +38,80 @@ class MateriaAbiertaController extends Controller
             ->get();
     }    
 
-    public function index()
+    public function index(Request $request)
 {
-    // Obtener los valores de las sesiones
-    $periodo_id = session('periodo_id', null);  // Obtiene el valor de periodo_id de la sesión, o null si no existe
-    $carrera_id = session('carrera_id', null);  // Obtiene el valor de carrera_id de la sesión, o null si no existe
+    // Obtener la carrera y el periodo seleccionados desde el formulario o sesión
+    $carreraId = $request->idcarrera ?? session('carrera_id');
+    $periodoId = $request->idperiodo ?? session('periodo_id');
 
-    // Obtener los periodos y las carreras
-    $periodos = Periodo::get();
-    $carreras = Carrera::get();
+    // Guardar en la sesión para mantener los valores seleccionados
+    session(['carrera_id' => $carreraId, 'periodo_id' => $periodoId]);
 
-    // Pasamos las variables a la vista
-    return view("asmateria/index", [
-        'periodo_id' => $periodo_id,  // Pasamos el valor de periodo_id
-        'carrera_id' => $carrera_id,  // Pasamos el valor de carrera_id
-        'periodos' => $periodos,      // Pasamos todos los periodos
-        'carreras' => $carreras,      // Pasamos todas las carreras
+    // Obtener la carrera seleccionada con las materias por semestre
+    $materiasPorSemestre = [];
+    for ($semestre = 1; $semestre <= 9; $semestre++) {
+        // Obtener materias del semestre actual
+        $materiasSemestre = Materia::whereHas('reticula', function ($query) use ($carreraId) {
+            $query->where('idCarrera', $carreraId); // Filtrar por carrera
+        })
+        ->where('semestre', $semestre) // Filtrar por semestre
+        ->get();
+
+        // Almacenar las materias en un arreglo indexado por semestre
+        $materiasPorSemestre[$semestre] = $materiasSemestre;
+    }
+
+    // Obtener las materias abiertas para el periodo y carrera seleccionados
+    $materiasAbiertas = MateriaAbierta::where('periodo_id', $periodoId)
+        ->where('carrera_id', $carreraId)
+        ->pluck('materia_id')
+        ->toArray();
+
+    // Enviar los datos a la vista
+    return view('matabi.index', [
+        'carrera' => Carrera::with(['reticulas'])->find($carreraId),
+        'periodos' => Periodo::all(),
+        'carreras' => Carrera::all(),
+        'materiasPorSemestre' => $materiasPorSemestre, // Materias organizadas por semestre
+        'materiasAbiertas' => $materiasAbiertas, // IDs de materias ya abiertas
     ]);
 }
+
+
 
 
     
 
    
-
 public function store(Request $request)
 {
-    foreach ($request->all() as $key => $value) {
-        if (substr($key, 0, 1) == 'm') {
-            $existe = $this->ma->firstWhere('materia_id', $request->$key);
-            if (is_null($existe) and $this->periodo_id != "-1" and $this->carrera_id != "-1") {
-                MateriaAbierta::create([
-                    'periodo_id' => $this->periodo_id,
-                    'carrera_id' => $this->carrera_id,
-                    'materia_id' => $value
+    $periodoId = session('periodo_id');
+    $carreraId = session('carrera_id');
+
+    if ($periodoId != "-1" && $carreraId != "-1") {
+        // Agregar materias marcadas
+        foreach ($request->except(['_token', 'eliminar']) as $key => $materiaId) {
+            if (substr($key, 0, 1) === 'm') {
+                MateriaAbierta::firstOrCreate([
+                    'materia_id' => $materiaId,
+                    'periodo_id' => $periodoId,
+                    'carrera_id' => $carreraId,
                 ]);
             }
         }
 
-        if (request()->eliminar and request()->eliminar !="NOELIMINAR"){
-            $existe = MateriaAbierta::where('materia_id', $request->eliminar)
-                                    ->where('periodo_id',$this->periodo_id)
-                                    ->delete();
-            return redirect()->route('materiasa.index');        
+        // Eliminar materias desmarcadas
+        if ($request->eliminar && $request->eliminar !== "NOELIMINAR") {
+            MateriaAbierta::where('materia_id', $request->eliminar)
+                ->where('periodo_id', $periodoId)
+                ->where('carrera_id', $carreraId)
+                ->delete();
         }
     }
-    return redirect()->route('materiasa.index');
+
+    return redirect()->route('matabi.index');
 }
+
 
 
 

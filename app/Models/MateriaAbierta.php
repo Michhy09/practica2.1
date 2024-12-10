@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class MateriaAbierta extends Model
 {
@@ -16,16 +17,26 @@ class MateriaAbierta extends Model
         'carrera_id',
     ];
 
-
-    // Relación con el modelo Periodo
-    public function periodo()
+    // En el modelo de MateriaAbierta
+    public function materia(): BelongsTo
     {
-        return $this->belongsTo(Periodo::class);
+        return $this->belongsTo(Materia::class, 'materia_id');
     }
 
-    // Relación con el modelo Materia
-    public function materia()
+    // En el modelo de MateriaAbierta
+    public function carrera(): BelongsTo
     {
-        return $this->belongsTo(Materia::class);
+        return $this->belongsTo(Carrera::class, 'carrera_id');
     }
+
+    public function periodo(): BelongsTo
+    {
+        return $this->belongsTo(Periodo::class, 'periodo_id');
+    }
+
+    public function personal()
+    {
+        return $this->belongsTo(Personal::class, 'personal_id');
+    }
+
 }

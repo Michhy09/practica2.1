@@ -1,15 +1,12 @@
 <?php
-use App\Models\Depto;
-use App\Models\Alumno;
-use App\Models\Carrera;
-use App\Models\GrupoHorario;
-use App\Models\MateriaAbierta;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HoraController;
 use App\Http\Controllers\DeptoController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\LugarController;
 use App\Http\Controllers\PlazaController;
+use App\Http\Controllers\TurnoController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\CarreraController;
@@ -17,11 +14,14 @@ use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EdificioController;
+use App\Http\Controllers\Grupo21337Controller;
+use App\Http\Controllers\GrupoHorario21337Controller;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ReticulaController;
 use App\Http\Controllers\GrupoHorarioController;
 use App\Http\Controllers\PersonalPlazaController;
 use App\Http\Controllers\MateriaAbiertaController;
+use App\Models\Grupo21337;
 
 Route::get('/', function () {
     return view('menu1');
@@ -205,21 +205,94 @@ Route::get('/hora.editar/{hora}', [HoraController::class, 'edit'])->name('hora.e
 
 
 Route::get('/matabi.index', [MateriaAbiertaController::class, 'index'])->name('matabi.index');
+Route::post('/matabi.store', [MateriaAbiertaController::class, 'store'])->name('matabi.store');
 
 
 Route::get('/asmateria', [GrupoController::class, 'index'])->name('asmateria.index');
 Route::post('/asmateria/store', [GrupoController::class, 'store'])->name('asmateria.store');
-Route::post('/asmateria/update', [GrupoController::class, 'updateHorario'])->name('asmateria.update');
 Route::post('/get-personals', [GrupoController::class, 'getPersonalsByCarrera'])->name('get.personals');
 
 //GUARDA Y ELIMINA HORARIO
-Route::post('/guardar-horario', [GrupoHorarioController::class, 'guardarHorario'])->name('guardar.horario');
-Route::post('/horario/eliminar', [GrupoHorarioController::class, 'eliminarHorario'])->name('eliminar.horario');
+Route::post('/asmateria/guardar-horario', [GrupoController::class, 'storeHorario'])->name('guardar.horario');
+Route::get('/terminar-horario', [GrupoController::class, 'terminarHorario'])->name('terminar.horario');
 
+Route::get('asmateria/edit', [GrupoController::class, 'verificarGrupo'])->name('asmateria.edit');
+Route::put('asmateria/update/{id}', [GrupoController::class, 'update'])->name('asmateria.update');
 
 Route::post('/materia_abierta/store', [MateriaAbiertaController::class, 'store'])->name('materia_abierta.storeMateria');
 
-Route::post('/asmateria/storeMateria', [GrupoController::class, 'storeMateria'])->name('asmateria.storeMateria');
+Route::get('/filtrar-materias', [GrupoController::class, 'filtrarMaterias'])->name('filtrar.materias');
+
+
+Route::get('/turnos.index', [TurnoController::class, 'index'])->name('turnos.index');
+
+Route::get('/turnos.create', [TurnoController::class, 'create'])->name('turnos.create');
+Route::post('/turnos.store', [TurnoController::class, 'store'])->name('turnos.store');
+
+Route::delete('/turnos.destroy/{turno}', [TurnoController::class, 'destroy'])->name('turnos.destroy');
+
+Route::get('turnos/{turno}/edit', [TurnoController::class, 'edit'])->name('turnos.edit');
+Route::put('turnos/{turno}', [TurnoController::class, 'update'])->name('turnos.update');
+
+Route::post('/asmateria/verificar', [GrupoController::class, 'verificarGrupo'])->name('asmateria.verificar');
+
+
+//grupoooo
+// Muestra la vista index21337
+Route::get('/grupo21337.index21337', [Grupo21337Controller::class, 'index'])->name('grupo21337.index21337');
+
+// Muestra el formulario de creación (index21337 también incluye esta funcionalidad)
+Route::get('/grupo21337/create', [Grupo21337Controller::class, 'create'])->name('grupo21337.create');
+Route::post('/grupo21337', [Grupo21337Controller::class, 'store'])->name('grupo21337.store');
+Route::get('/grupo21337.show/{grupo}', [Grupo21337Controller::class, 'show'])->name('grupo21337.show');
+
+// Elimina un registro de grupo21337
+Route::post('/grupo21337.update/{grupo}', [Grupo21337Controller::class, 'update'])->name('grupo21337.update');
+
+Route::delete('/grupo21337.destroy/{grupo}', [Grupo21337Controller::class, 'destroy'])->name('grupo21337.destroy');
+
+// Muestra la vista de edición
+Route::get('/grupo21337/{grupo}/edit', [Grupo21337Controller::class, 'edit'])->name('grupo21337.edit');
+
+
+
+///HORARIOOOOOOOOOOO2
+Route::get('/horario21337.index21337', [GrupoHorario21337Controller::class, 'index'])->name('horario21337.index21337');
+
+Route::get('/horario21337/create', [GrupoHorario21337Controller::class, 'create'])->name('horario21337.create');
+Route::post('/horario21337', [GrupoHorario21337Controller::class, 'store'])->name('horario21337.store');
+Route::get('/horario21337.show/{horario}', [GrupoHorario21337Controller::class, 'show'])->name('horario21337.show');
+
+Route::post('/horario21337.update/{horario}', [GrupoHorario21337Controller::class, 'update'])->name('horario21337.update');
+
+Route::delete('/horario21337.destroy/{horario}', [GrupoHorario21337Controller::class, 'destroy'])->name('horario21337.destroy');
+
+Route::get('/horario21337/{horario}/edit', [GrupoHorario21337Controller::class, 'edit'])->name('horario21337.edit');
+
+
+Route::resource('grupos', GrupoController::class)->parameters([
+    'grupos' => 'grupo'
+]);
+
+Route::get('/grupos.index', [GrupoController::class, 'index'])->name('grupos.index');
+Route::get('/grupos.create', [GrupoController::class, 'create'])->name('grupos.create');
+Route::get('/grupos.edit/{grupo}', [GrupoController::class, 'edit'])->name('grupos.edit');
+Route::get('/grupos.show/{grupo}', [GrupoController::class, 'show'])->name('grupos.show');
+Route::delete('/grupos.destroy/{grupo}', [GrupoController::class, 'destroy'])->name('grupos.destroy');
+Route::put('/grupos.update/{grupo}', [GrupoController::class, 'update'])->name('grupos.update');
+Route::post('/grupos.store', [GrupoController::class, 'store'])->name('grupos.store');
+
+// Rutas para GrupoHorario
+Route::get('grupohorarios', [GrupoHorarioController::class, 'index'])->name('grupohorarios.index');
+Route::get('grupohorarios/create', [GrupoHorarioController::class, 'create'])->name('grupohorarios.create');
+Route::post('grupohorarios', [GrupoHorarioController::class, 'store'])->name('grupohorarios.store');
+Route::get('grupohorarios/{id}/edit', [GrupoHorarioController::class, 'edit'])->name('grupohorarios.edit');
+Route::put('grupohorarios/{id}', [GrupoHorarioController::class, 'update'])->name('grupohorarios.update');
+Route::delete('grupohorarios/{id}', [GrupoHorarioController::class, 'destroy'])->name('grupohorarios.destroy');
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('menu1');

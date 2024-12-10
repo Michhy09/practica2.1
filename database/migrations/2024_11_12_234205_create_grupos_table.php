@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('max_alumnos'); // max_alumnos (int)
             $table->foreignId('periodo_id')->constrained(); // periodo_id (foreign key)
             $table->foreignId('personal_id')->nullable()->constrained(); // personal_id (foreign key, acepta nulos)
+            $table->foreignId('materia_abierta_id')->constrained();
             $table->timestamps();
         });
         

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     @vite(["resources/sass/app.scss", "resources/js/app.js"])
-    
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -167,6 +167,9 @@
                         <button type="submit" class="btn btn-link nav-link">Logout</button>
                     </form>
                 </li>
+                <li><a class="nav-link" href="{{ route('grupo21337.index21337') }}">Grupo2</a></li>
+                <li><a class="nav-link" href="{{ route('horario21337.index21337') }}">Horario2</a></li>
+
                 @endguest
             </ul>
         </div>
@@ -191,7 +194,8 @@
             <li><a class="nav-link" href="{{ route('lugar.index') }}">Lugar</a></li>
             <li><a class="nav-link" href="{{ route('hora.index') }}">Hora</a></li>
             <li><a class="nav-link" href="{{ route('matabi.index') }}">Materia Abierta</a></li>
-            <li><a class="nav-link" href="{{ route('asmateria.index') }}">Asignacion de materias</a></li>
+            <li><a class="nav-link" href="{{ route('grupos.index') }}">Asignacion de materias</a></li>
+
         </ul>
     </div>
     @endauth

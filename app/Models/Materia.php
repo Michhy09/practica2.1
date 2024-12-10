@@ -24,4 +24,11 @@ class Materia extends Model
     {
         return $this->belongsTo(Reticula::class, 'idReticula'); // 'idReticula' es la clave foránea
     }
+
+
+    public function materiaAbiertas()
+{
+    return $this->hasMany(MateriaAbierta::class);
+}
+
 }

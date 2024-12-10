@@ -9,12 +9,41 @@ class Grupo extends Model
 {
     /** @use HasFactory<\Database\Factories\GrupoFactory> */
     use HasFactory;
-    protected $fillable = ['grupo', 'descripcion', 'fecha','max_alumnos', 'periodo_id', 'personal_id'];
+    protected $fillable = [
+        'grupo',
+        'fecha',
+        'descripcion',
+        'max_alumnos',
+        'periodo_id',
+        'personal_id',
+        'materia_abierta_id', // Agregar este campo
+    ];
 
-    // Modelo Grupo
-public function periodo()
-{
-    return $this->belongsTo(Periodo::class, 'periodo_id', 'idPeriodo');
-}
+    
+   public function periodo()
+   {
+       return $this->belongsTo(Periodo::class);
+   }
 
+   /**
+    * Relación con la tabla `personals`.
+    */
+   public function personal()
+   {
+       return $this->belongsTo(Personal::class);
+   }
+
+   /**
+    * Relación con la tabla `materia_abiertas`.
+    */
+   public function materiaAbierta()
+   {
+       return $this->belongsTo(MateriaAbierta::class);
+   }
+
+
+   public function carrera()
+    {
+        return $this->materiaAbierta->belongsTo(Carrera::class, 'carrera_id');
+    }
 }
